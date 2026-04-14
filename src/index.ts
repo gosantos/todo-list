@@ -1,7 +1,7 @@
 import { config } from "./config";
 import { coolKeeper } from "./coolkeeper";
 
-const port = Number(config.PORT);
+const port = config.PORT;
 
 type User = {
   id: string;
@@ -19,15 +19,13 @@ type Todo = {
 
 const users: User[] = [];
 const todos: Todo[] = [];
-let nextUserId = 1;
-let nextTodoId = 1;
 
 function generateUserId(): string {
-  return String(nextUserId++);
+  return crypto.randomUUID();
 }
 
 function generateTodoId(): string {
-  return String(nextTodoId++);
+  return crypto.randomUUID();
 }
 
 function findUserById(id: string): User | undefined {

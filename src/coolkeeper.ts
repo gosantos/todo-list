@@ -38,8 +38,6 @@ export class CoolKeeper {
         context,
       });
 
-      console.log({ body })
-
       const res = await fetch(`${this.url}/api/v1/errors`, {
         method: "POST",
         headers: {
@@ -54,8 +52,6 @@ export class CoolKeeper {
         console.warn(`[cool-keeper] Error reporting failed: ${res.status} ${res.statusText}`);
         return null;
       }
-
-      console.log({ resStatus: res.status })
 
       return await res.json();
     } catch (err) {
